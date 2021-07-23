@@ -54,3 +54,16 @@ header {
     border: none;
     border-radius: 1rem;
 }
+
+.goBtn:hover {
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1.15);
+}
+
+
+.zipBox:hover {
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1.05);
+}
