@@ -38,6 +38,8 @@ header {
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
+    border: none;
+    border-radius: 1rem;;
 }
 
 .goBtn {
@@ -49,4 +51,6 @@ header {
     font-family: all-round-gothic, sans-serif;
     color: white;
     font-size: 20px;
+    border: none;
+    border-radius: 1rem;
 }
