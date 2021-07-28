@@ -8,7 +8,7 @@ h1 {
     font-style: normal;
     color: white;
     text-align: center;
-    font-size: 75px;
+    font-size: 85px;
     margin-top: 20px;
 }
 
@@ -17,7 +17,7 @@ header {
     border-radius: 1rem;
     margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
-    width: 70rem;
+    width: 90%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -28,18 +28,18 @@ header {
     align-content: center;
 }
 
-.zipBox {
+.searchBox {
     width: 150px;
     height: 40px;
     text-align: center;
     margin: auto;
-    background: rgb(255,255,255, 0.65);
+    background: rgb(255,255,255, 0.75);
     font-family: all-round-gothic, sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
     border: none;
-    border-radius: 1rem;;
+    border-radius: 1rem;
 }
 
 .goBtn {
@@ -47,7 +47,7 @@ header {
     width: 80px;
     margin-top: 10px;
     margin-bottom: 25px;
-    background: rgb(255,255,255, 0.45);
+    background: rgba(255, 255, 255, 0.45);
     font-family: all-round-gothic, sans-serif;
     color: white;
     font-size: 15px;
@@ -62,8 +62,13 @@ header {
 }
 
 
-.zipBox:hover {
-    cursor: pointer;
-    transition: transform 150ms;
-    transform: scale(1.05);
+.searchBox:hover {
+    cursor:text;
+}
+
+/* Responsive Screen Sizing: */
+@media only screen and (max-width: 530px) {
+    h1 {
+    font-size: 55px;
+    }
 }
