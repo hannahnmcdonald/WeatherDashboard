@@ -33,7 +33,7 @@ h1 {
     height: 40px;
     text-align: center;
     margin: auto;
-    background: rgb(255,255,255, 0.75);
+    background: rgb(255,255,255);
     font-family: all-round-gothic, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -49,7 +49,7 @@ h1 {
     margin-bottom: 25px;
     background: rgba(255, 255, 255, 0.60);
     font-family: all-round-gothic, sans-serif;
-    color: white;
+    color:grey;
     font-size: 15px;
     border: none;
     border-radius: 1rem;
@@ -58,7 +58,7 @@ h1 {
 .goBtn:hover {
     cursor: pointer;
     transition: transform 150ms;
-    transform: scale(1.15);
+    transform: scale(1.10);
 }
 
 
@@ -72,8 +72,9 @@ h1 {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space=evenly;
-    width: 90%;
+    /* width: 90%; */
     margin-left: 5%;
+    margin-right: 5%;
     margin-top: 2rem;
 }
 
@@ -81,12 +82,13 @@ h1 {
     /* display: none; */
     background: rgb(255,255,255);
     font-family: all-round-gothic, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     color: black;
     font-style: normal;
     border-radius: 1rem;
     margin: 10px 10px 10px 10px;
+    width: 20%;
 }
 
 .card {
@@ -103,8 +105,8 @@ h1 {
 
 .list-group {
     list-style: none;
-    /* display: none; */
-    display: flex
+    /* display: none */
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
