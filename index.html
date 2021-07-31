@@ -24,50 +24,107 @@
       <h1> Weather Dashboard </h1>
       <input type="text" class="city" placeholder="City Search">
       <!-- Hidden Recent Searches Bar with Bootstrap -->
-      <ul class="list-group list-group-horizontal-sm">
+      <ul class="list-group list-group-horizontal-sm" id="history">
+          <!-- <li><button data-location="Chicago">Chicago</button></li>
+          <li><button data-location="London">London</button></li>
+          <li><button data-location="Munich">Munich</button></li> -->
       </ul>
       <div class="btnContainer">
           <button class= "goBtn"> Go</button>
       </div>
     </div>
+    <!-- Today Weather Card: -->
+    <div class="card-deck">
+      <div class="card-today">
+        <div class="card-body">
+          <h5 class="card-title-today">07/30/2021</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            <dt>UV Index:</dt>
+            <dd>0.47</dd>
+            </dt>
+          </dl>
+        </div>
+      </div>
     <!-- Cards for weather forecast with Bootstrap -->
-    <div class = "container">
-      <div class="col-2 mt-5 text-center">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
-          <p class="card-text"></p>
+          <h5 class="card-date">Day 1</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            </dt>
+          </dl>
         </div>
       </div>
-      <div class="col-2 mt-5 text-center">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
-          <p class="card-text"></p>
+          <h5 class="card-date">Day 2</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            </dt>
+          </dl>
         </div>
       </div>
-      <div class="col-2 mt-5 text-center">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
-          <p class="card-text"></p>
+          <h5 class="card-date">Day 3</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            </dt>
+          </dl>
         </div>
       </div>
-      <div class="col-2 mt-5 text-center">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
-          <p class="card-text"></p>
+          <h5 class="card-date">Day 4</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            </dt>
+          </dl>
         </div>
       </div>
-      <div class="col-2 mt-5 text-center">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
-          <p class="card-text"></p>
+          <h5 class="card-date">Day 5</h5>
+          <dl>
+            <dt>Temp:</dt>
+            <dd>99.9</dd>
+            <dt>Humidity:</dt>
+            <dd>100%</dd>
+            <dt>Wind:</dt>
+            <dd>15 MPH</dd>
+            </dt>
+          </dl>
         </div>
       </div>
     </div>
+    </div>
+  </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./script.js"></script>
     </body>
