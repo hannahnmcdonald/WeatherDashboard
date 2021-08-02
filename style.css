@@ -67,7 +67,7 @@ h1 {
 }
 
 .card-deck {
-    display: flex;
+    display: none;
     /* Will be Display:Flex when search begins */
     flex-wrap: wrap;
     align-items: flex-start;
@@ -130,9 +130,13 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* #history {
-    display: none;
-} */
+#UVIndex {
+    font-family: all-round-gothic, sans-serif;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 1rem;
+}
 
 /* Responsive Screen Sizing: */
 @media only screen and (max-width: 530px) {
