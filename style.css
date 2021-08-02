@@ -138,6 +138,12 @@ button:hover {
     border-radius: 1rem;
 }
 
+.cityTitle {
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+}
+
 /* Responsive Screen Sizing: */
 @media only screen and (max-width: 530px) {
     h1 {

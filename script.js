@@ -7,9 +7,9 @@ var temp = document.querySelector('#temp');
 var wind = document.querySelector('#wind');
 var humidity = document.querySelector('#humidity');
 var UVIndex = document.querySelector('#UVIndex');
-var UVIndex1 = document.querySelector('#UVIndex1');
 var cardDate = document.querySelector('#date');
 var photo = document.getElementById('img');
+var cityTitle = document.querySelector('.cityTitle');
 // Declaring Constants:----------------------------------//
 const apiUrl = "https://api.openweathermap.org";
 const apiKey = "d04c941f9a17d4fd069f2142973171ec";
@@ -81,6 +81,7 @@ function getLocation(event) {
     // TEST: console.log(location);
     // TEST: console.log(url);
 
+        console.log(location);
     
     fetch(url).then(function (response) {
         if (!response.ok) {
@@ -100,6 +101,8 @@ function getLocation(event) {
         temp.textContent = data.main.temp;
         wind.textContent = data.wind.speed;
         humidity.textContent = data.main.humidity;
+        // Populates city name onto current forecast card
+        cityTitle.textContent = location;
 
 
 
@@ -154,16 +157,15 @@ function getFiveDayForecast(lat, lon) {
                 
                 
                 cardDate.textContent = date;
-                console.log(cardDate);
+                // console.log(cardDate);
                 
             }
 
             // Passes UV Index data to current data weather card //
-            UVIndex1.textContent = data.daily[i].uvi;
             UVIndex.textContent = data.daily[i].uvi;
 
-            
             setUltraviolentIndex(UVIndex);
+
           });
         
         }
