@@ -101,6 +101,9 @@ h1 {
     font-style: normal;
     border-radius: 1rem;
     margin: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .list-group {
@@ -130,12 +133,16 @@ button:hover {
     transform: scale(1.05);
 }
 
-#UVIndex {
+.UVIndex {
     font-family: all-round-gothic, sans-serif;
     color: white;
+    /* background-color: rgba(12, 168, 116, 0.75); */
     font-size: 15px;
     border: none;
     border-radius: 1rem;
+    margin-top: 5px;
+    width: 50%;
+    margin-left: 25%;
 }
 
 .cityTitle {

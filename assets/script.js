@@ -15,10 +15,6 @@ const apiUrl = "https://api.openweathermap.org";
 const apiKey = "d04c941f9a17d4fd069f2142973171ec";
 
 
-// console.log(citySearch);
-
-
-
 // Display the recent searches in a list order----------------//
 function displaySavedLocations() {
 
@@ -35,8 +31,20 @@ function displaySavedLocations() {
 // Creates List element for recent searches--------------------//
 function createHistoryButton(location) {
     var listItem = document.createElement("li");
-    var content = `<button data-location="${location}">${location}</button>`;
-    listItem.innerHTML = content;
+    // var content = `<button data-location="${location}">${location}</button>`;
+    // listItem.innerHTML = content;
+
+    var button = document.createElement("button");
+    button.setAttribute("data-location", location);
+    button.textContent = location;
+
+    button.addEventListener('click', function() {
+        citySearch.value = location;
+        getLocation();
+    })
+
+    listItem.append(button)
+
     historyEl.appendChild(listItem);
 };
 
@@ -63,13 +71,11 @@ function handleSuccessfulLocationFetch(data, location) {
     createHistoryButton(location);
     // Add to local storage
     setLocalStorage(location);
-    // Update the card-today container
-    // fetch 5 day forecast
+
 };
 
 // Retrieving API data for inputted location-----------------------------------------//
-function getLocation(event) {
-    event.preventDefault();
+function getLocation() {
     // Boxes are formed when function is run- changes css from display none to display flex
     cardDeck.style.display = "flex";
     var location = citySearch.value;
@@ -77,9 +83,6 @@ function getLocation(event) {
         window.alert('Please enter a location!');
     }
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`;
-
-    // TEST: console.log(location);
-    // TEST: console.log(url);
 
         console.log(location);
     
@@ -97,14 +100,17 @@ function getLocation(event) {
             window.alert("this is not a valid location!");
         
         }
-
-        temp.textContent = data.main.temp;
-        wind.textContent = data.wind.speed;
-        humidity.textContent = data.main.humidity;
+        // Enters API Data into card 
+        temp.textContent = data.main.temp + "° F";
+        wind.textContent = data.wind.speed + " MPH";
+        humidity.textContent = data.main.humidity + "%";
         // Populates city name onto current forecast card
-        cityTitle.textContent = location;
-
-
+        cityTitle.textContent = data.name;
+        cardDate.textContent = moment().format("dddd MM/DD/YYYY");
+        // Weather Icon:
+        var icon = data.weather[0].icon;
+        var photoSrc = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        photo.setAttribute('src', photoSrc);
 
         // TEST:
         // console.log(data.main.temp)
@@ -127,7 +133,7 @@ function getLocation(event) {
 
 
 };
-
+// Five day forecast API---------------------------------------------------//
 function getFiveDayForecast(lat, lon) {
     var fiveUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey;
     fetch(fiveUrl)
@@ -137,50 +143,55 @@ function getFiveDayForecast(lat, lon) {
           .then(function (data){
               console.log("data", data);
 
-              for (i = 0; i < 5 ; i++) {
+              var UVIndex = document.querySelector('#UVIndex');
+              UVIndex.textContent= data.daily[0].uvi;
+              setUltraviolentIndex(UVIndex);
 
+              for (i = 1; i < data.daily.length -2 ; i++) {
+
+
+                var temp = document.querySelector('#temp' + i);
+                var wind = document.querySelector('#wind' + i);
+                var humidity = document.querySelector('#humidity' + i);
+                var UVIndex = document.querySelector('#UVIndex' + i);
+                var cards = document.querySelector('#date' + i);
                 // Set Date
-                var time = moment().add();
-                var date = (time.format('MM/D/YY'));
+                // var time = moment().add();
+                var date = moment.unix(data.daily[i].dt).format("dddd MM/DD/YYYY");
 
                 // Set weather photo
-                // var photo = data.daily[i].weather[0].icon;
-                // var photoSrc = "http://openweathermap.org/img/wn/" + photo + "@2x.png";
-                // photo.setAttribute('src', photoSrc);
+                var photo = document.querySelector('#img' + i);
+                var icon = data.daily[i].weather[0].icon;
+                var photoSrc = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+                photo.setAttribute('src', photoSrc);
                 
                 // TEST: console.log(time);
                 // TEST: console.log(date);
 
-                // temp.textContent = data.daily[i].temp.day
-                // wind.textContent = data.daily[i].weather.wind_speed;
-                // humidity.textContent = data.daily[i].feels_like.humidity;
+                temp.textContent = data.daily[i].temp.day
+                wind.textContent = data.daily[i].wind_speed;
+                humidity.textContent = data.daily[i].humidity;
+                UVIndex.textContent= data.daily[i].uvi;
                 
                 
-                cardDate.textContent = date;
-                // console.log(cardDate);
+                cards.textContent = date;
+                setUltraviolentIndex(UVIndex);
                 
             }
-
-            // Passes UV Index data to current data weather card //
-            UVIndex.textContent = data.daily[i].uvi;
-
-            setUltraviolentIndex(UVIndex);
-
+            
           });
         
         }
     })
 };
-
+// Set's the UV Index color-------------------------------------------------//
 function setUltraviolentIndex(UVIndex) {
-    if (UVIndex <= 2) {
-        $("#UVIndex").attr("color", "green");
-    };
-    if (UVIndex > 2 && UVIndex <= 5) {
-        $("#UVIndex").attr("color", "yellow");
-    };
-    if (UVIndex > 5) {
-        $("#UVIndex").attr("color", "red");
+    if (UVIndex.textContent <= 2) {
+        UVIndex.style.backgroundColor = "rgba(12, 168, 116, 0.75)"
+    } else if (UVIndex.textContent > 2 && UVIndex.textContent <= 7) {
+        UVIndex.style.backgroundColor = "rgba(255, 123, 0, 0.75)"
+    }else if (UVIndex.textContent > 7) {
+        UVIndex.style.backgroundColor = "rgba(255, 0, 0, 0.75)"
     };
 };
 
